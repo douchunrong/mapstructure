@@ -1236,7 +1236,7 @@ func (d *Decoder) decodeStruct(name string, data interface{}, val reflect.Value)
 	if val.Type().String() == "time.Time" {
 		if dataVal.Kind() == reflect.String {
 			timeLayout := "2006-01-02T15:04:05+08:00"
-			if strings.Contains(string.ToLower(dataVal.String()),"z") {
+			if strings.Contains(strings.ToLower(dataVal.String()),"z") {
 				timeLayout = "2006-01-02T15:04:05Z"
 			}
 
