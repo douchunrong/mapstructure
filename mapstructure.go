@@ -1239,8 +1239,8 @@ func (d *Decoder) decodeStruct(name string, data interface{}, val reflect.Value)
 			if strings.Contains(strings.ToLower(dataVal.String()),"z") {
 				timeLayout = "2006-01-02T15:04:05Z"
 			}
-
-			loc, _ := time.LoadLocation("Asia/Shanghai")
+			loc, localErr := time.LoadLocation("Asia/Shanghai")
+			fmt.Println("localErr:",localErr)
 			t, err := time.ParseInLocation(timeLayout, dataVal.String(),loc)
 			if err != nil {
 				return err
