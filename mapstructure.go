@@ -1241,7 +1241,7 @@ func (d *Decoder) decodeStruct(name string, data interface{}, val reflect.Value)
 			}
 			loc, localErr := time.LoadLocation("Asia/Shanghai")
 			// fmt.Println("localErr:",localErr)
-			if localErr !+= nil {
+			if localErr != nil {
 				loc = time.FixedZone("CST-8", 8*3600)
 			}
 			t, err := time.ParseInLocation(timeLayout, dataVal.String(),loc)
