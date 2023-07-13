@@ -1240,7 +1240,10 @@ func (d *Decoder) decodeStruct(name string, data interface{}, val reflect.Value)
 				timeLayout = "2006-01-02T15:04:05Z"
 			}
 			loc, localErr := time.LoadLocation("Asia/Shanghai")
-			fmt.Println("localErr:",localErr)
+			// fmt.Println("localErr:",localErr)
+			if localErr !+= nil {
+				loc = time.FixedZone("CST-8", 8*3600)
+			}
 			t, err := time.ParseInLocation(timeLayout, dataVal.String(),loc)
 			if err != nil {
 				return err
